@@ -4,6 +4,7 @@
 'Multiplication Tables
 'https://github.com/IsabellaDougherty/github.git
 
+Option Strict On
 Option Explicit On
 
 Imports System
@@ -12,16 +13,22 @@ Module MultiplicationTables
     Sub Main()
         ' Get user input for number
         Console.Write("Enter a number: ")
-        Dim num As Integer = Console.ReadLine()
 
         ' Display multiplication table
-        Console.WriteLine("Multiplication Table:")
-        For i As Integer = 1 To num
-            For j As Integer = 1 To num
-                Console.Write(String.Format("{0, 4}", i * j))
+        Try
+            Dim num As Integer = CInt(Console.ReadLine())
+            Console.WriteLine("Multiplication Table:")
+            For i As Integer = 1 To num
+                For j As Integer = 1 To num
+                    Console.Write(String.Format("{0, 4}", i * j))
+                Next
+                Console.WriteLine()
             Next
-            Console.WriteLine()
-        Next
+        Catch ex As Exception
+            Console.WriteLine("Input invalid")
+        End Try
+
+
     End Sub
 
 End Module
