@@ -11,23 +11,24 @@ Imports System
 Module MultiplicationTables
 
     Sub Main()
-        ' Get user input for number
-        Console.Write("Enter a number: ")
-
-        ' Display multiplication table
-        Try
+        Dim valid As Boolean = True
+        ' Get user input for number and display multiplication table
+        While valid
+            Console.Write("Enter a number: ")
+            Try
             Dim num As Integer = CInt(Console.ReadLine())
             Console.WriteLine("Multiplication Table:")
-            For i As Integer = 1 To num
-                For j As Integer = 1 To num
-                    Console.Write(String.Format("{0, 4}", i * j))
+                For i As Integer = 1 To num
+                    For j As Integer = 1 To num
+                        Console.Write(String.Format("{0, 4}", i * j))
+                    Next
+                    Console.WriteLine()
                 Next
-                Console.WriteLine()
-            Next
-        Catch ex As Exception
-            Console.WriteLine("Input invalid")
+                valid = False
+            Catch ex As Exception
+                Console.WriteLine("Input invalid")
         End Try
-
+        End While
 
     End Sub
 
